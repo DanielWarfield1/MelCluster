@@ -1,5 +1,5 @@
-scipy==1.6
-pandas==1.2
-sklearn==0.23
-matplotlib==3.4
-seaborn==0.11
+scipy
+pandas
+sklearn
+matplotlib
+seaborn
