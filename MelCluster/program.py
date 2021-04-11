@@ -217,9 +217,7 @@ def main():
                     df_tsne = tsne_reduce(df_sum)
                     set_plt_config(df_tsne)
                 elif ans=='s':
-                    print(df_sum)
                     df_sum, df_mel = set_key_vars(df_sum, df_mel)
-                    print(df_sum)
 
                 elif ans=='x':
                     ans = input('Are you sure you want to exit? (y/n):\n\nInput: ')
