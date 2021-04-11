@@ -85,6 +85,7 @@ def plot_n_closest_mel(df, df_mel):
     global n, win_size, idx, short, verbose
 
     close_df = df.nsmallest(n, ['distance'])
+    print(close_df)
     plotter.plot_mel_set_by_window(df_mel, close_df, win_size, verbose=verbose)
         
 #prompts the user to set variables
@@ -97,14 +98,13 @@ def set_key_vars(df_sum, df_mel, execute=True):
         if execute: 
             print('re-featurizing...')
             df_sum = summarize(df_mel)
-            print(df_sum)
     except:
         print('invalid, retaining value')
     try:
         idx = int(input('index of point being analyzed ({}): '.format(idx)))
         if execute:
             print('recalculating distances...')
-            df_mel = calculate_distance(df_mel)
+            df_sum = calculate_distance(df_sum)
     except Exception as e:
         print('invalid, retaining value')
 
@@ -217,7 +217,9 @@ def main():
                     df_tsne = tsne_reduce(df_sum)
                     set_plt_config(df_tsne)
                 elif ans=='s':
+                    print(df_sum)
                     df_sum, df_mel = set_key_vars(df_sum, df_mel)
+                    print(df_sum)
 
                 elif ans=='x':
                     ans = input('Are you sure you want to exit? (y/n):\n\nInput: ')
