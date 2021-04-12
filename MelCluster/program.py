@@ -14,7 +14,7 @@ verbose = True
 short_label_all = True
 
 #plot config globals
-plt_style='plug_in'
+plt_style='instrument'
 plt_size='distance'
 plt_hue='src'
 
@@ -85,7 +85,9 @@ def plot_n_closest_mel(df, df_mel):
     global n, win_size, idx, short, verbose
 
     close_df = df.nsmallest(n, ['distance'])
+
     print(close_df)
+    print('average distance: {}'.format(close_df['distance'].mean()))
     plotter.plot_mel_set_by_window(df_mel, close_df, win_size, verbose=verbose)
         
 #prompts the user to set variables
@@ -193,8 +195,12 @@ def main():
 
             print('\n======Requesting input files======')
             print('note: multi select is allowed')
+            if verbose: print('loading...')
             df_mel = load_win()
+            if verbose: print('summarizing...')
             df_sum = summarize(df_mel)
+            if verbose: print(df_sum.head())
+            if verbose: print('tsne reducing...')
             df_tsne = tsne_reduce(df_sum)
             print('loading successful')
             print('\n')
@@ -238,7 +244,6 @@ def main():
             ans = input('Are you sure you want to exit? (y/n):\n\nInput: ')
             if ans == 'y':
                 return
-
 
 if __name__ == '__main__':
     main()
