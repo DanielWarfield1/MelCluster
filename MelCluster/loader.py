@@ -186,7 +186,7 @@ def load_from_txt_v2(file_paths, verbose=False, use_full_path_name=False, fill_m
                         beat_index+=1
                         split = line.split(': ')
                         instrument = split[1].split(' ')[0]
-                        pitch = int(split[2].split(' ')[0])
+                        pitch = split[2].split(' ')[0]
                         velocity = int(split[3])
 
                         continue
