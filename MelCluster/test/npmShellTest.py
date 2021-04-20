@@ -14,8 +14,8 @@ def main():
 		#change this to change delay time
 		time.sleep(3)
 
-		if newData == '-1':
-			break
+		if '-1' in newData:
+			return
 
 if __name__ == '__main__':
 	main()
